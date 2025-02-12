@@ -8,14 +8,8 @@ interface ListButton {
     listContent: ListContent[];
 }
 
-interface ListButtons {
-    list_1: ListButton;
-    list_2: ListButton;
-    list_3: ListButton;
-}
-
-export const listButtons: ListButtons = {
-    list_1: {
+export const listButtons: ListButton[] = [
+    {
         headName: "Get to Know Us",
         listContent: [
             { id: 1, name: "Careers" },
@@ -25,7 +19,7 @@ export const listButtons: ListButtons = {
             { id: 5, name: "Press Center" },
         ]
     },
-    list_2: {
+    {
         headName: "Make Money with Us",
         listContent: [
             { id: 1, name: "Become an Affiliate" },
@@ -34,7 +28,7 @@ export const listButtons: ListButtons = {
             { id: 4, name: "Self-Publish with Us" }
         ]
     },
-    list_3: {
+    {
         headName: "Let Us Help You",
         listContent: [
             { id: 1, name: "Your Account" },
@@ -43,4 +37,4 @@ export const listButtons: ListButtons = {
             { id: 4, name: "Returns & Replacements" }
         ]
     },
-};
+];
