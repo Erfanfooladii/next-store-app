@@ -4,7 +4,7 @@ interface Category {
 }
 export interface Product {
   _id: string;
-  images: Array<string>;
+  images: string[];
   name: string;
   price: string;
   rating: string;
