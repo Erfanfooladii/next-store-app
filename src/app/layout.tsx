@@ -6,7 +6,6 @@ import { Footer } from "@/layouts/Footer";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Providers from "../Providers/ReactQuery";
-import { CategoryProvider } from "@/contexts/categoreyContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,11 +33,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-          <CategoryProvider>
-            <Header />
-            <div className="w-full sm:w-2/3 m-auto">{children}</div>
-            <Footer />
-          </CategoryProvider>
+          <Header />
+          <div className="w-full sm:w-3/4 m-auto">{children}</div>
+          <Footer />
         </Providers>
       </body>
     </html>
