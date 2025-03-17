@@ -3,7 +3,7 @@ import { Data } from "@/Interfaces/products";
 const getData = async (
   search: string = "",
   page: string = "1",
-  category: string[] = [],
+  category: string = "",
   limit: string = "10"
 ): Promise<Data | undefined> => {
   const baseURL = "https://kaaryar-ecom.liara.run/v1/products";

@@ -5,7 +5,7 @@ import { getData } from "./api";
 export const useGetProduct = (
   search: string,
   page: string,
-  category: string[]
+  category: string
 ) => {
   return useQuery<Data | undefined, Error>({
     queryKey: ["data", search, page, category],
