@@ -1,7 +1,7 @@
 "use client";
-import { useContext, useState } from "react";
-import { categoryContext } from "@/contexts/categoreyContext";
+import { useEffect, useState } from "react";
 import CategoryItem from "./InputCategorey";
+import useCategory from "@/stores/categoryStore";
 
 const Category = () => {
   const categories = [
@@ -11,16 +11,28 @@ const Category = () => {
     { name: "Books", id: "6748dfa3c9017c78628d4a90" },
     { name: "Clothing", id: "6748dfa3c9017c78628d4a8a" },
   ];
-  const { setCategory } = useContext(categoryContext);
-  const [isChecked, setIsChecked] = useState<string>("");
+  //  const { setCategory } = useContext(categoryContext);
+  const { setCategory } = useCategory();
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  useEffect(() => {
+    if (isChecked === false) {
+      setCategory("");
+    }
+  }, [isChecked]);
   return (
     <div className="">
       <h2 className="text-sm">Category</h2>
-      <select>
+      <form className="">
         {categories.map((item) => (
-          <CategoryItem name={item.name} id={item.id} />
+          <CategoryItem
+            setCategory={setCategory}
+            key={item.id}
+            name={item.name}
+            id={item.id}
+            checked={isChecked}
+          />
         ))}
-      </select>
+      </form>
     </div>
   );
 };
