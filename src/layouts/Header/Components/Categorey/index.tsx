@@ -21,7 +21,7 @@ const Category = () => {
   }, [isChecked]);
   return (
     <div className="">
-      <h2 className="text-sm">Category</h2>
+      <h2 className="text-lg border-b border-r-orange-300">Category</h2>
       <form className="">
         {categories.map((item) => (
           <CategoryItem

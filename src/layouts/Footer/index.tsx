@@ -11,7 +11,9 @@ interface ListButtonItem {
 const providerButtons = (listNumber: ListNumber) => {
   return (
     <ul className="flex flex-col">
-      <h2 className="text-lg">{listNumber.headName}</h2>
+      <h2 className="text-lg border-b-2 border-orange-100 w-full">
+        {listNumber.headName}
+      </h2>
       {listNumber.listContent.map((item) => (
         <li key={item.id} className="text-sm">
           {item.name}
@@ -24,7 +26,7 @@ const providerButtons = (listNumber: ListNumber) => {
 export function Footer() {
   return (
     <footer className="bg-orange-400">
-      <div className="w-full sm:w-2/3 m-auto p-2 items-center flex justify-between">
+      <div className="w-full sm:w-3/4 m-auto p-2 md:items-center flex justify-between flex-col gap-3 items-start md:flex-col">
         {listButtons.map((item: ListButtonItem, index: number) => (
           <div key={index}>{providerButtons(item)}</div>
         ))}
