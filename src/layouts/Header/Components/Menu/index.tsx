@@ -1,11 +1,14 @@
+import { ProviderMobileSize } from "@/Providers/ResponsiveSize";
 import Category from "../Categorey";
 
 const Menu = () => {
   return (
-    <div className="w-64 p-2 fixed left-0 bg-orange-400">
-      <h1>Store</h1>
-      <Category />
-    </div>
+    <ProviderMobileSize isReverse>
+      <div className="w-64 p-2 fixed left-0 bg-orange-400">
+        <h1>Store</h1>
+        <Category />
+      </div>
+    </ProviderMobileSize>
   );
 };
 export default Menu;

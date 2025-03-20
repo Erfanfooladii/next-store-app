@@ -1,7 +1,10 @@
-import useWindowDimensions from "@/utils/media.hook";
+import dynamic from "next/dynamic";
 import { dataDetails } from "./data";
+import useWindowDimensions from "@/utils/media.hook";
+
 const ContactDetails = () => {
   const { width } = useWindowDimensions();
+
   if (width !== null && width > 500) {
     return (
       <ul className="flex gap-3">
@@ -18,11 +21,12 @@ const ContactDetails = () => {
       <select className="max-w-24 p-2 rounded-md">
         {dataDetails.map((item, index) => (
           <option key={index} className="flex">
-            <span>{item.name}</span>
+            {item.name}
           </option>
         ))}
       </select>
     );
   }
 };
-export default ContactDetails;
+
+export default dynamic(() => Promise.resolve(ContactDetails), { ssr: false });
