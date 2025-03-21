@@ -26,7 +26,7 @@ const providerButtons = (listNumber: ListNumber) => {
 export function Footer() {
   return (
     <footer className="bg-orange-400">
-      <div className="w-full sm:w-3/4 m-auto p-2 md:items-center flex justify-between flex-col gap-3 items-start md:flex-col">
+      <div className="w-full sm:w-3/4 m-auto p-2  flex justify-between flex-col md:flex-row gap-3">
         {listButtons.map((item: ListButtonItem, index: number) => (
           <div key={index}>{providerButtons(item)}</div>
         ))}
