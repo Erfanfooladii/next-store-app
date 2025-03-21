@@ -1,15 +1,32 @@
 import { ProviderMobileSize } from "@/Providers/ResponsiveSize";
+import useSearch from "@/stores/searchStore";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
 const Search = () => {
+  const { setSearch } = useSearch();
+  const [searchValue, setSearchValue] = useState<string>("");
+  const searchHandeler = (e: FormEvent) => {
+    e.preventDefault();
+    setSearch(searchValue);
+  };
   return (
     <ProviderMobileSize isReverse={false}>
-      <form className=" flex gap-1 w-full rounded-full bg-white p-1">
+      <form
+        onSubmit={searchHandeler}
+        className=" flex gap-1 w-full rounded-full bg-white p-1"
+      >
         <input
           type="text"
           placeholder="Search..."
           className="p-1 rounded-full w-full focus:outline-none"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSearchValue(e.target.value)
+          }
         />
-        <button className="bg-slate-500 rounded-full p-2 hover:bg-slate-400">
+        <button
+          type="submit"
+          className="bg-slate-500 rounded-full p-2 hover:bg-slate-400"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"

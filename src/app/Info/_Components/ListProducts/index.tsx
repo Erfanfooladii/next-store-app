@@ -4,12 +4,13 @@ import { Data, Product } from "@/Interfaces/products";
 import useCategory from "@/stores/categoryStore";
 import useData from "@/stores/dataStore";
 import usePage from "@/stores/pageStore";
+import useSearch from "@/stores/searchStore";
 import useShowItem from "@/stores/showStore";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ListProducts = () => {
-  const [search, setSearch] = useState<string>("");
+  const { search } = useSearch();
   const { numberPage } = usePage();
   const { category } = useCategory();
   const { showItem } = useShowItem();
