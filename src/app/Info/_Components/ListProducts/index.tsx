@@ -6,7 +6,6 @@ import useData from "@/stores/dataStore";
 import usePage from "@/stores/pageStore";
 import useSearch from "@/stores/searchStore";
 import useShowItem from "@/stores/showStore";
-import Link from "next/link";
 import { useEffect } from "react";
 import ItemProduct from "./ItemProduct";
 
