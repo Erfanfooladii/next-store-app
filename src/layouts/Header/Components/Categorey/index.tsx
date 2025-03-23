@@ -11,7 +11,6 @@ const Category = () => {
     { name: "Books", id: "6748dfa3c9017c78628d4a90" },
     { name: "Clothing", id: "6748dfa3c9017c78628d4a8a" },
   ];
-  //  const { setCategory } = useContext(categoryContext);
   const { setCategory } = useCategory();
   const [isChecked, setIsChecked] = useState<boolean>(false);
   useEffect(() => {
