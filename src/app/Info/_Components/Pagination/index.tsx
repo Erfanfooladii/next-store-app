@@ -2,6 +2,7 @@ import React from "react";
 import { Data } from "@/Interfaces/products";
 import usePage from "@/stores/pageStore";
 import useData from "@/stores/dataStore";
+import ButtonPagination from "./ButtonPagination";
 
 const Pagination = () => {
   const { data } = useData();
@@ -16,21 +17,13 @@ const Pagination = () => {
   return (
     <div className="my-3 flex justify-center gap-2">
       {totalButtons.map((pageNumber, index) => (
-        <button
+        <ButtonPagination
           key={index}
-          className={`w-10 h-10 sm:w-14 rounded-md sm:h-14 bg-orange-400 ${
-            Number(numberPage) === index + 1
-              ? "border-orange-800 bg-white border-solid border"
-              : ""
-          }`}
-          value={pageNumber}
-          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-            const target = e.target as HTMLButtonElement;
-            setNumberPage(target.value);
-          }}
-        >
-          {pageNumber}
-        </button>
+          index={index}
+          pageNumber={pageNumber}
+          numberPage={numberPage}
+          setNumberPage={setNumberPage}
+        />
       ))}
     </div>
   );
