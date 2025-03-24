@@ -1,3 +1,4 @@
+import LoadingImage from "@/Components/LoadingImage";
 import { Product } from "@/Interfaces/products";
 import Link from "next/link";
 
@@ -6,11 +7,7 @@ const ItemProduct = ({ product }: { product: Product }) => {
     <li className=" bg-slate-300 w-full sm:w-72 p-2 shadow-lg rounded-md">
       <Link href={product._id}>
         <div className="w-full h-52">
-          <img
-            src={product.images[0]}
-            alt="image product"
-            className="w-full h-full"
-          />
+          <LoadingImage src={product?.images[0]} size={15} alt={product.name} />
         </div>
         <div className="grid grid-cols-1 grid-rows-3">
           <h3 className="text-lgd">{product.name}</h3>
