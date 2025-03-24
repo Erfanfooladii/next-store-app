@@ -8,6 +8,7 @@ import useSearch from "@/stores/searchStore";
 import useShowItem from "@/stores/showStore";
 import { useEffect } from "react";
 import ItemProduct from "./ItemProduct";
+import LoadingPage from "@/Components/Loading";
 
 const ListProducts = () => {
   const { search } = useSearch();
@@ -24,7 +25,7 @@ const ListProducts = () => {
   useEffect(() => {
     setData(data);
   }, [data]);
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingPage />;
   if (error)
     return (
       <div className="p-3 rounded border-red-800 bg-red-200 text-red-600">
