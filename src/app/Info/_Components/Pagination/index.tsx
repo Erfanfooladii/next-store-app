@@ -15,7 +15,7 @@ const Pagination = () => {
 
   const { setNumberPage, numberPage } = usePage();
   return (
-    <div className="my-3 flex justify-center gap-2">
+    <div className="my-3 flex justify-center flex-wrap gap-2">
       {totalButtons.map((pageNumber, index) => (
         <ButtonPagination
           key={index}
