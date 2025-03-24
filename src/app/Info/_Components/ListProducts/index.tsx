@@ -38,7 +38,7 @@ const ListProducts = () => {
       <ShowItem />
       <ul className="flex w-full justify-center flex-wrap gap-4 flex-row">
         {data.products.map((product: Product) => (
-          <ItemProduct product={product} />
+          <ItemProduct key={product._id} product={product} />
         ))}
       </ul>
     </div>

@@ -3,10 +3,7 @@ import Link from "next/link";
 
 const ItemProduct = ({ product }: { product: Product }) => {
   return (
-    <li
-      key={product._id}
-      className=" bg-slate-300 w-full sm:w-72 p-2 shadow-lg rounded-md"
-    >
+    <li className=" bg-slate-300 w-full sm:w-72 p-2 shadow-lg rounded-md">
       <Link href={product._id}>
         <div className="w-full h-52">
           <img
