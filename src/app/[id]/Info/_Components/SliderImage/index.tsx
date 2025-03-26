@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { SliderButtonNext, SliderButtonPrev } from "./SliderButtons";
+import LoadingImage from "@/Components/LoadingImage";
 
 const SliderImages = ({ images = [] }: { images: string[] | undefined }) => {
   const [image, setImage] = useState(0);
@@ -21,20 +22,23 @@ const SliderImages = ({ images = [] }: { images: string[] | undefined }) => {
     }, 2000);
   }, []);
   return (
-    <section className="w-full h-full relative">
-      <div className="w-full h-full flex overflow-hidden ">
+    <section className="w-full h-full relative overflow-hidden">
+      <div className="w-full h-full flex">
         {images.map((item, index) => (
-          <img
-            key={item}
-            src={item}
-            alt={item}
-            aria-hidden={image !== index}
-            className="w-full rounded-lg h-full block shrink-0 grow-0 transition-transform duration-300 ease-in-out object-cover"
+          <div
+            key={index}
+            className="flex-shrink-0 w-full h-full transition-transform duration-300 ease-in-out"
             style={{
-              translate: `${-100 * image}%`,
-              transition: "translate 300ms ease-in-out",
+              transform: `translateX(-${100 * image}%)`,
             }}
-          />
+          >
+            <LoadingImage
+              src={item}
+              alt={item}
+              size={15}
+              className="rounded-lg w-full h-full object-cover"
+            />
+          </div>
         ))}
       </div>
       <SliderButtonNext showImageNext={showImageNext} />
