@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { SliderButtonNext, SliderButtonPrev } from "./SliderButtons";
 
-const SliderImages = ({ images = [] }: { images: string[] }) => {
+const SliderImages = ({ images = [] }: { images: string[] | undefined }) => {
   const [image, setImage] = useState(0);
   const showImageNext = () => {
     setImage((indexImg) => {
@@ -29,7 +29,7 @@ const SliderImages = ({ images = [] }: { images: string[] }) => {
             src={item}
             alt={item}
             aria-hidden={image !== index}
-            className="w-full h-full block shrink-0 grow-0 transition-transform duration-300 ease-in-out object-cover"
+            className="w-full rounded-lg h-full block shrink-0 grow-0 transition-transform duration-300 ease-in-out object-cover"
             style={{
               translate: `${-100 * image}%`,
               transition: "translate 300ms ease-in-out",
