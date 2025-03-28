@@ -6,6 +6,7 @@ type CartStore = {
   cartItems: Array<Product>;
   addCartItem: (newCartItem: Product) => void;
   removeCartItem: (id: string) => void;
+  clearAllCartItems: () => void;
 };
 
 export const useCartStore = create<CartStore>()(
@@ -17,6 +18,9 @@ export const useCartStore = create<CartStore>()(
       },
       removeCartItem: (id) => {
         set({ cartItems: get().cartItems.filter((p) => p._id !== id) });
+      },
+      clearAllCartItems: () => {
+        set({ cartItems: [] });
       },
     }),
     {

@@ -2,12 +2,32 @@
 
 import { useGetProductId } from "@/app/[id]/api/hook";
 import SliderImages from "../SliderImage";
+import { useCartStore } from "@/stores/cartStore";
+import { useEffect, useState } from "react";
 
 const ListDetails = ({ id }: { id: string }) => {
+  const { addCartItem, removeCartItem, cartItems } = useCartStore();
   const { isLoading, data, error } = useGetProductId(id);
+  const [isCart, setIsCart] = useState<boolean>(false);
+  const [textBtn, setTextBtn] = useState<string>("Add to cart");
+  console.log(cartItems);
+  useEffect(() => {
+    if (data?._id === id) {
+      setIsCart(false);
+    }
+  }, []);
+  const buttonHadneler = () => {
+    if (!data) return;
+    if (isCart) {
+      setIsCart(!isCart);
+      addCartItem(data);
+    } else {
+      setIsCart(!isCart);
+      removeCartItem(data!._id);
+    }
+  };
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
 
   return (
     <div className="md:flex md:gap-2 md:justify-center">
@@ -93,8 +113,11 @@ const ListDetails = ({ id }: { id: string }) => {
               </svg>
             </a>
           </div>
-          <button className="bg-orange-500 hover:bg-slate-500 rounded-md p-4">
-            Add To Cart
+          <button
+            onClick={buttonHadneler}
+            className="bg-orange-500 hover:bg-slate-500 rounded-md p-4"
+          >
+            {isCart ? "Add to cart" : "Remove from cart"}
           </button>
         </div>
       </div>
