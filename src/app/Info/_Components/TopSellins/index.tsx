@@ -5,8 +5,6 @@ const TopSellins = () => {
   const { data, isLoading, error } = useGetTopSellins();
   if (error) return <div className="bg-red-400 p-2">{error.message}</div>;
   if (isLoading) return <div className="bg-red-400 p-2">Loaindg...</div>;
-  console.log(data);
-
   return (
     <div>
       <h2 className="text-lg border-b border-r-orange-300">
