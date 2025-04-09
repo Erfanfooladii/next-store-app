@@ -1,5 +1,5 @@
 import { ProviderMobileSize } from "@/Providers/ResponsiveSize";
-import Category from "../Categorey";
+import Category from "../../../../Components/Categorey";
 
 const Menu = () => {
   return (
