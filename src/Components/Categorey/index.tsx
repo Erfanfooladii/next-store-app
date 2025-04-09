@@ -12,6 +12,7 @@ const Category = () => {
       <form className="">
         {categories.map((category) => (
           <CategoryItem
+            key={category.id}
             selectedCategory={selectedCategory}
             handleCheckboxChange={handleCheckboxChange}
             name={category.name}

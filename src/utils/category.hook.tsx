@@ -22,8 +22,11 @@ export const useCategoryHandele: ReturnCategoryHandele = () => {
 
   const { setCategory } = useCategory();
   const handleCheckboxChange = (categoryId: string) => {
-    setSelectedCategory(categoryId === selectedCategory ? null : categoryId);
-    setCategory(categoryId);
+    const newSelectedCategory =
+      categoryId === selectedCategory ? "" : categoryId;
+    setSelectedCategory(newSelectedCategory);
+    setCategory(newSelectedCategory);
+    console.log(categoryId);
   };
   return {
     categories,
