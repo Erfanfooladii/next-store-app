@@ -1,4 +1,4 @@
-import Category from "@/layouts/Header/Components/Categorey";
+import Category from "@/Components/Categorey";
 import { ProviderMobileSize } from "@/Providers/ResponsiveSize";
 import TopSellins from "../TopSellins";
 
