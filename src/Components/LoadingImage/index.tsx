@@ -1,3 +1,4 @@
+import { useLoadingImage } from "@/utils/loadingImage.hook";
 import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
@@ -13,14 +14,7 @@ const LoadingImage = ({
   frameStyle,
   ...rest
 }: LoadingImageProps) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = src ?? "";
-    img.onload = () => setIsLoading(false);
-    img.onerror = () => setIsLoading(false);
-  }, [src]);
+  const { isLoading } = useLoadingImage({ src });
 
   return (
     <div className={`w-full h-full ${frameStyle}`}>
