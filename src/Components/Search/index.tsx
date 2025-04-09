@@ -1,14 +1,8 @@
 import { ProviderMobileSize } from "@/Providers/ResponsiveSize";
-import useSearch from "@/stores/searchStore";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useSearchHandele } from "@/utils/search.hook";
 
 const Search = () => {
-  const { setSearch } = useSearch();
-  const [searchValue, setSearchValue] = useState<string>("");
-  const searchHandeler = (e: FormEvent) => {
-    e.preventDefault();
-    setSearch(searchValue);
-  };
+  const { searchHandeler, setSearchValue } = useSearchHandele();
   return (
     <ProviderMobileSize isReverse={false}>
       <form
