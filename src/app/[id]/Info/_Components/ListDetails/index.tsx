@@ -9,21 +9,18 @@ const ListDetails = ({ id }: { id: string }) => {
   const { addCartItem, removeCartItem, cartItems } = useCartStore();
   const { isLoading, data, error } = useGetProductId(id);
   const [isCart, setIsCart] = useState<boolean>(false);
-  const [textBtn, setTextBtn] = useState<string>("Add to cart");
-  console.log(cartItems);
   useEffect(() => {
-    if (data?._id === id) {
-      setIsCart(false);
-    }
-  }, []);
+    const isCartItem = cartItems.some((item) => item._id === id);
+    setIsCart(isCartItem);
+  }, [cartItems, id]);
   const buttonHadneler = () => {
     if (!data) return;
     if (isCart) {
-      setIsCart(!isCart);
-      addCartItem(data);
-    } else {
-      setIsCart(!isCart);
+      setIsCart(false);
       removeCartItem(data!._id);
+    } else {
+      setIsCart(true);
+      addCartItem(data);
     }
   };
   if (isLoading) return <div>Loading...</div>;
@@ -117,7 +114,7 @@ const ListDetails = ({ id }: { id: string }) => {
             onClick={buttonHadneler}
             className="bg-orange-500 hover:bg-slate-500 rounded-md p-4"
           >
-            {isCart ? "Add to cart" : "Remove from cart"}
+            {isCart ? "Remove from cart" : "Add to cart"}
           </button>
         </div>
       </div>
