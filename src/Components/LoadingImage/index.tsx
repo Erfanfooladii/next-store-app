@@ -1,5 +1,4 @@
 import { useLoadingImage } from "@/utils/loadingImage.hook";
-import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
 interface LoadingImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
