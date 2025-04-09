@@ -5,6 +5,7 @@ import closeIcon from "@/layouts/Header/assets/icons8-close-67.png";
 import menuIcon from "@/layouts/Header/assets/menu-navigation-grid-1528-svgrepo-com.png";
 import ButtonsProfileHeader from "./Components/ButtonsProfileHeader";
 import { ProviderMobileSize } from "@/Providers/ResponsiveSize";
+import Link from "next/link";
 
 const TopContent = ({
   isOpen,
@@ -31,7 +32,9 @@ const TopContent = ({
           </button>
         </ProviderMobileSize>
         <div className="text-xl">
-          <h1>STEGAR</h1>
+          <Link href="/">
+            <h1>STEGAR</h1>
+          </Link>
         </div>
       </div>
     </div>
