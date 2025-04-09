@@ -6,7 +6,7 @@ const ProviderMobileSize = ({
   isReverse = false,
 }: {
   children: ReactNode;
-  isReverse: boolean;
+  isReverse?: boolean;
 }) => {
   const sizeScreen = useWindowDimensions();
   const [isRender, setIsRender] = useState<boolean>(false);
