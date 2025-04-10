@@ -1,24 +1,10 @@
 "use client";
 import LoadingImage from "@/Components/LoadingImage";
-import { useCartStore } from "@/stores/cartStore";
-import { useEffect, useState } from "react";
+import { useCartHandele } from "@/utils/cart.hook";
 
 const Cart = () => {
-  const { cartItems, removeCartItem, clearAllCartItems } = useCartStore();
-  const [isEmpty, setIsEmpty] = useState<boolean>(false);
-  const totalPrices = cartItems
-    .reduce(
-      (accumulator, currentValue) => accumulator + Number(currentValue.price),
-      0
-    )
-    .toFixed(2);
-  useEffect(() => {
-    if (cartItems.length > 0) {
-      setIsEmpty(true);
-    } else {
-      setIsEmpty(false);
-    }
-  }, [cartItems]);
+  const { isEmpty, cartItems, removeCartItem, clearAllCartItems, totalPrices } =
+    useCartHandele();
   if (!isEmpty)
     return (
       <div className=" min-h-[650px] flex items-center justify-center">
