@@ -10,17 +10,22 @@ import { useRouter } from "next/navigation";
 const ButtonsProfileHeader = () => {
   const { cartItems } = useCartStore();
   const { push } = useRouter();
+  const { isAuthenticated, logoutUserAuth } = useAuthStore();
   const authButtonHadeler = () => {
-    push("/register");
+    if (!isAuthenticated) {
+      push("/register");
+    } else {
+      logoutUserAuth();
+    }
   };
-  const { authList } = useAuthStore();
+
   return (
     <div className="flex gap-1">
       <button
         onClick={authButtonHadeler}
         className="p-2 hover:bg-slate-300 rounded-full transition-transform"
       >
-        {authList.length < 0 ? <AccountIcon /> : <LogoutIcon />}
+        {!isAuthenticated ? <AccountIcon /> : <LogoutIcon />}
       </button>
       <button
         onClick={() => push("/Cart")}
@@ -28,7 +33,7 @@ const ButtonsProfileHeader = () => {
       >
         <StoreIcon />
         <span className="w-6 rounded-full h-6 top-[-10px] left-[-2px] bg-red-600 absolute">
-          {cartItems.length}
+          {!isAuthenticated ? "0" : cartItems.length}
         </span>
       </button>
     </div>

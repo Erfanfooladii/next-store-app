@@ -1,8 +1,10 @@
+import { useAuthStore } from "@/stores/authStore";
 import { useCartStore } from "@/stores/cartStore";
 import { useEffect, useState } from "react";
 
 export const useCartHandele = () => {
   const { cartItems, removeCartItem, clearAllCartItems } = useCartStore();
+  const { isAuthenticated } = useAuthStore();
   const [isEmpty, setIsEmpty] = useState<boolean>(false);
   const totalPrices = cartItems
     .reduce(
@@ -11,7 +13,7 @@ export const useCartHandele = () => {
     )
     .toFixed(2);
   useEffect(() => {
-    if (cartItems.length > 0) {
+    if (cartItems.length > 0 && isAuthenticated) {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
@@ -23,5 +25,6 @@ export const useCartHandele = () => {
     removeCartItem,
     clearAllCartItems,
     totalPrices,
+    isAuthenticated,
   };
 };
