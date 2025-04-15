@@ -4,7 +4,6 @@ import { useGetProductId } from "@/app/[id]/api/hook";
 import SliderImages from "../SliderImage";
 import { useCartStore } from "@/stores/cartStore";
 import { useEffect, useState } from "react";
-
 const ListDetails = ({ id }: { id: string }) => {
   const { addCartItem, removeCartItem, cartItems } = useCartStore();
   const { isLoading, data, error } = useGetProductId(id);
@@ -25,7 +24,6 @@ const ListDetails = ({ id }: { id: string }) => {
   };
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-
   return (
     <div className="md:flex md:gap-2 md:justify-center">
       <div className="max-w-[700px] rounded-lg min-h-72 p-2 bg-orange-400">

@@ -1,11 +1,14 @@
 import LoadingImage from "@/Components/LoadingImage";
 import { Product } from "@/Interfaces/products";
+import { useAuthStore } from "@/stores/authStore";
 import Link from "next/link";
 
 const ItemProduct = ({ product }: { product: Product }) => {
+  const { isAuthenticated } = useAuthStore();
+
   return (
     <li className=" bg-slate-300 w-full sm:w-72 p-2 shadow-lg rounded-md">
-      <Link href={product._id}>
+      <Link href={isAuthenticated ? product._id : "/login"}>
         <div className="w-full h-52">
           <LoadingImage src={product?.images[0]} size={15} alt={product.name} />
         </div>
