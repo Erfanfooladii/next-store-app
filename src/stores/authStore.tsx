@@ -10,9 +10,12 @@ interface UserItem {
   token: string;
   user: User;
 }
-
+interface LoginUser {
+  password: string;
+  name: string;
+}
 interface AuthState {
-  currentUser: UserItem | null;
+  currentUser: UserItem | LoginUser | null;
   isAuthenticated: boolean;
   addUserAuth: (newUser: UserItem) => void;
   logoutUserAuth: () => void;
