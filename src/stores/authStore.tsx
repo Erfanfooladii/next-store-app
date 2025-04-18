@@ -5,19 +5,20 @@ interface User {
   id: string;
   email: string;
 }
-
-interface UserItem {
-  token: string;
-  user: User;
-}
 interface LoginUser {
   password: string;
-  name: string;
+  email: string;
+}
+
+interface UserItem {
+  token: string | undefined;
+  user: User | LoginUser;
 }
 interface AuthState {
   currentUser: UserItem | LoginUser | null;
   isAuthenticated: boolean;
   addUserAuth: (newUser: UserItem) => void;
+  loginUserAuth: (newLoginUser: LoginUser) => void;
   logoutUserAuth: () => void;
 }
 
@@ -33,7 +34,12 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: true,
         });
       },
-
+      loginUserAuth: (newLoginUser) => {
+        set({
+          currentUser: newLoginUser,
+          isAuthenticated: true,
+        });
+      },
       logoutUserAuth: () => {
         set({
           currentUser: null,
@@ -43,7 +49,7 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: "auth-storage",
-      storage: createJSONStorage(() => sessionStorage),
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
