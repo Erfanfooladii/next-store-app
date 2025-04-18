@@ -1,11 +1,11 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import type { Register } from "./type";
+import type { RegisterType } from "../types";
 import { postUser } from "./api";
 
 export const usePostRegister = (): UseMutationResult<
   Response,
   Error,
-  Register
+  RegisterType
 > => {
   return useMutation({
     mutationFn: postUser,

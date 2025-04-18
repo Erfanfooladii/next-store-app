@@ -1,48 +1,9 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
-import type { Register } from "../api/type";
-import { useMutation } from "@tanstack/react-query";
-import { postUser } from "../api/api";
-import { useRouter } from "next/navigation";
-import { useAuthStore } from "@/stores/authStore";
+import React from "react";
+import { useRegisterUser } from "./hook";
 const Register = () => {
-  const { addUserAuth, currentUser } = useAuthStore();
-  const [registerFromUser, setRegisterFromUser] = useState<Register>({
-    name: "",
-    email: "",
-    password: "",
-  });
-  const { push } = useRouter();
-
-  const mutation = useMutation({
-    mutationFn: (formData: Register) => postUser(formData),
-    onSuccess: (data) => {
-      addUserAuth(data);
-      push("/");
-    },
-    onError: (error) => {
-      console.error("Registration error:", error.message);
-    },
-  });
-  console.log(currentUser);
-
-  const formHandler = (e: React.FormEvent) => {
-    e.preventDefault();
-    mutation.mutate(registerFromUser);
-    setRegisterFromUser({
-      name: "",
-      email: "",
-      password: "",
-    });
-  };
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setRegisterFromUser((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const { formHandler, registerFromUser, inputHandler } = useRegisterUser();
   return (
     <div className="min-h-[750px] flex items-center justify-center min-w-32">
       <form

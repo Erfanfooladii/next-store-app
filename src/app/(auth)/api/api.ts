@@ -1,6 +1,6 @@
-import { Register } from "./type";
+import { RegisterType } from "../types";
 
-export const postUser = async (userData: Register) => {
+export const postUser = async (userData: RegisterType) => {
   try {
     const res = await fetch("https://kaaryar-ecom.liara.run/v1/auth/register", {
       method: "POST",
