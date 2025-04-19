@@ -10,7 +10,6 @@ export const useLoginHandeler = () => {
     email: "",
   });
   const { loginUserAuth, currentUser } = useAuthStore();
-  console.log(currentUser);
 
   const loginHandeler = (e: React.FormEvent) => {
     e.preventDefault();
