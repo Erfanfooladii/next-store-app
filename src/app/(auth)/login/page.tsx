@@ -2,16 +2,20 @@
 import Link from "next/link";
 import React from "react";
 import { useLoginHandeler } from "./hook";
+import FormLogin from "./_components/FormLogin";
+import InputLogin from "./_components/InputLogin";
 
 const Login = () => {
   const { loginHandeler, inputHandeler, userAuth } = useLoginHandeler();
   return (
     <div className="min-h-[750px] flex items-center justify-center min-w-32">
-      <form
-        onSubmit={loginHandeler}
-        className="flex border border-orange-900 p-4 rounded-lg gap-2 flex-col items-center"
-      >
-        <h1 className="text-2xl font-semibold">Login Form</h1>
+      <FormLogin loginHandeler={loginHandeler}>
+        <InputLogin
+          label="Your email"
+          userAuth={userAuth.email}
+          nameInput="email"
+          inputHandeler={inputHandeler}
+        />
         <div className="flex justify-between items-center gap-2">
           <label htmlFor="email">Your email:</label>
           <input
@@ -46,7 +50,7 @@ const Login = () => {
             </Link>
           </p>
         </div>
-      </form>
+      </FormLogin>
     </div>
   );
 };
