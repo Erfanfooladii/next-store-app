@@ -19,8 +19,8 @@ const Cart = () => {
       <h2 className="font-extrabold text-2xl border-b-2 border-r-orange-400 border-solid">
         Cart List:
       </h2>
-      <div className="flex flex-col">
-        <ul className="flex flex-col gap-2 py-3">
+      <div className="flex flex-col md:min-h-[660px] gap-3 md:flex-row-reverse justify-between">
+        <ul className="flex flex-col md:flex-row md:items-center md:flex-wrap gap-2 py-3">
           {cartItems.map((item, index) => (
             <li
               key={index}
@@ -46,18 +46,18 @@ const Cart = () => {
             </li>
           ))}
         </ul>
-        <div className="p-2 bg-slate-500 rounded-md">
-          <h2 className="text-xl font-bold">
+        <div className="p-2 md:max-h-60 md:min-w-60 flex md:flex-col md:justify-center md:items-center bg-slate-500 rounded-md">
+          <h2 className="text-xl text-white font-bold">
             Total Cart: <span>{cartItems.length}</span>
           </h2>
-          <p className="text-lg">
+          <p className="text-lg text-red-200">
             Price: <span>{totalPrices}</span>
           </p>
           <button
             onClick={() => clearAllCartItems()}
-            className="bg-orange-500 hover:bg-slate-500 rounded-md p-4"
+            className="bg-orange-500 hover:bg-orange-300 rounded-md p-4"
           >
-            All cart
+            Remove All cart
           </button>
         </div>
       </div>
