@@ -2,6 +2,7 @@ import LoadingImage from "@/Components/LoadingImage";
 import { Product } from "@/Interfaces/products";
 import { useAuthStore } from "@/stores/authStore";
 import Link from "next/link";
+import React from "react";
 
 const ItemProduct = ({ product }: { product: Product }) => {
   const { isAuthenticated } = useAuthStore();
@@ -25,4 +26,5 @@ const ItemProduct = ({ product }: { product: Product }) => {
     </li>
   );
 };
-export default ItemProduct;
+
+export default React.memo(ItemProduct);

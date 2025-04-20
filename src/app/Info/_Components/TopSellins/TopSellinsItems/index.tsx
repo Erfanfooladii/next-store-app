@@ -1,5 +1,6 @@
 import LoadingImage from "@/Components/LoadingImage";
 import { Product } from "@/Interfaces/products";
+import React from "react";
 
 const TopSellinsItems = ({ item }: { item: Product }) => {
   return (
@@ -15,4 +16,4 @@ const TopSellinsItems = ({ item }: { item: Product }) => {
   );
 };
 
-export default TopSellinsItems;
+export default React.memo(TopSellinsItems);
