@@ -1,15 +1,16 @@
-interface FormLoginProps {
+interface FormAuthProps {
   children?: React.ReactNode;
-  loginHandeler: (e: React.FormEvent) => void;
+  formHandler: (e: React.FormEvent) => void;
+  title: string;
 }
 
-const FormLogin = ({ children, loginHandeler }: FormLoginProps) => {
+const FormAuth = ({ children, formHandler, title }: FormAuthProps) => {
   return (
     <form
-      onSubmit={loginHandeler}
+      onSubmit={formHandler}
       className="flex border border-orange-900 p-4 rounded-lg gap-2 flex-col items-center"
     >
-      <h1 className="text-2xl font-semibold">Login Form</h1>
+      <h1 className="text-2xl font-semibold">{title}</h1>
       <div className="flex justify-between flex-col items-center gap-2">
         {children}
       </div>
@@ -17,4 +18,4 @@ const FormLogin = ({ children, loginHandeler }: FormLoginProps) => {
   );
 };
 
-export default FormLogin;
+export default FormAuth;

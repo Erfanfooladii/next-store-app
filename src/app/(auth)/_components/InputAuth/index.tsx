@@ -1,29 +1,30 @@
-import { LoginType } from "@/app/(auth)/types";
+import React from "react";
 
-const InputLogin = ({
-  inputHandeler,
-  userAuth,
+const InputAuth = ({
+  inputHandler,
+  value,
   nameInput,
   label,
-  ...props
+  type,
 }: {
-  inputHandeler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  userAuth: LoginType;
+  inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
   nameInput: string;
   label: string;
+  type?: React.HTMLInputTypeAttribute;
 }) => {
   return (
     <div className="flex justify-between items-center gap-2">
       <label htmlFor={nameInput}>{label}:</label>
       <input
-        type="text"
+        type={type}
         id={nameInput}
-        onChange={inputHandeler}
-        value={userAuth.email}
+        onChange={inputHandler}
+        value={value}
         className="p-1 shadow focus:outline-none rounded-md"
         required
       />
     </div>
   );
 };
-export default InputLogin;
+export default React.memo(InputAuth);
