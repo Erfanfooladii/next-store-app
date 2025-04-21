@@ -5,7 +5,7 @@ const InputAuth = ({
   value,
   nameInput,
   label,
-  type,
+  type = "text",
 }: {
   inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
@@ -21,6 +21,7 @@ const InputAuth = ({
         id={nameInput}
         onChange={inputHandler}
         value={value}
+        name={nameInput}
         className="p-1 shadow focus:outline-none rounded-md"
         required
       />
