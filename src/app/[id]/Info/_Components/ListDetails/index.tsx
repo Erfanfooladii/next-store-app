@@ -1,27 +1,10 @@
 "use client";
-
-import { useGetProductId } from "@/app/[id]/api/hook";
 import SliderImages from "../SliderImage";
-import { useCartStore } from "@/stores/cartStore";
-import { useEffect, useState } from "react";
+import { useProductCard } from "@/app/[id]/hook";
 const ListDetails = ({ id }: { id: string }) => {
-  const { addCartItem, removeCartItem, cartItems } = useCartStore();
-  const { isLoading, data, error } = useGetProductId(id);
-  const [isCart, setIsCart] = useState<boolean>(false);
-  useEffect(() => {
-    const isCartItem = cartItems.some((item) => item._id === id);
-    setIsCart(isCartItem);
-  }, [cartItems, id]);
-  const buttonHadneler = () => {
-    if (!data) return;
-    if (isCart) {
-      setIsCart(false);
-      removeCartItem(data!._id);
-    } else {
-      setIsCart(true);
-      addCartItem(data);
-    }
-  };
+  const { isLoading, data, error, buttonHadnler, isCart } = useProductCard({
+    id,
+  });
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   return (
@@ -109,7 +92,7 @@ const ListDetails = ({ id }: { id: string }) => {
             </a>
           </div>
           <button
-            onClick={buttonHadneler}
+            onClick={buttonHadnler}
             className="bg-orange-500 hover:bg-slate-500 rounded-md p-4"
           >
             {isCart ? "Remove from cart" : "Add to cart"}
