@@ -1,5 +1,5 @@
 "use client";
-import SliderImages from "../SliderImage";
+import SliderImages from "./_components/SliderImage";
 import { useProductCard } from "@/app/[id]/hook";
 import TitleProduct from "./_components/TitleProduct";
 import DescriptionProduct from "./_components/DescriptionProduct";
@@ -8,6 +8,7 @@ import PriceProduct from "./_components/PriceProduct";
 import ColorProduct from "./_components/ColorProduct";
 import QytProduct from "./_components/QytProduct";
 import ShareProduct from "./_components/ShareProduct";
+import ButtonProduct from "./_components/ButtonProduct";
 const ListDetails = ({ id }: { id: string }) => {
   const { isLoading, data, error, buttonHadnler, isCart } = useProductCard({
     id,
@@ -16,7 +17,7 @@ const ListDetails = ({ id }: { id: string }) => {
   if (error) return <div>Error: {error.message}</div>;
   return (
     <div className="md:flex md:gap-2 md:justify-center">
-      <div className="max-w-[700px] rounded-lg min-h-72 p-2 bg-orange-400">
+      <div className="w-full md:w-[700px] rounded-lg min-h-72 p-2 bg-orange-400">
         <SliderImages images={data?.images} />
       </div>
       <div className="p-2">
@@ -33,12 +34,7 @@ const ListDetails = ({ id }: { id: string }) => {
             <ColorProduct />
           </div>
           <ShareProduct />
-          <button
-            onClick={buttonHadnler}
-            className="bg-orange-500 hover:bg-slate-500 rounded-md p-4"
-          >
-            {isCart ? "Remove from cart" : "Add to cart"}
-          </button>
+          <ButtonProduct isCart={isCart} buttonHadnler={buttonHadnler} />
         </div>
       </div>
     </div>
