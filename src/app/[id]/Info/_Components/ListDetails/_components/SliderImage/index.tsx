@@ -1,26 +1,9 @@
-import { useEffect, useState } from "react";
+import useSliderImage from "./hook";
 import { SliderButtonNext, SliderButtonPrev } from "./SliderButtons";
 import LoadingImage from "@/Components/LoadingImage";
 
 const SliderImages = ({ images = [] }: { images: string[] | undefined }) => {
-  const [image, setImage] = useState(0);
-  const showImageNext = () => {
-    setImage((indexImg) => {
-      if (indexImg === images.length - 1) return 0;
-      return indexImg + 1;
-    });
-  };
-  const showImagePrev = () => {
-    setImage((indexImg) => {
-      if (indexImg === 0) return images.length - 1;
-      return indexImg - 1;
-    });
-  };
-  useEffect(() => {
-    setTimeout(() => {
-      showImageNext();
-    }, 2000);
-  }, []);
+  const { image, showImageNext, showImagePrev } = useSliderImage({ images });
   return (
     <section className="w-full h-full relative overflow-hidden">
       <div className="w-full h-full flex">
