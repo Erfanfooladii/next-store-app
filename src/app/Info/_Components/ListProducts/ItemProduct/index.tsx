@@ -3,24 +3,25 @@ import { Product } from "@/Interfaces/products";
 import { useAuthStore } from "@/stores/authStore";
 import Link from "next/link";
 import React from "react";
+import ButtonItem from "./_components/ButtonItem";
+import CategoryItem from "./_components/CategoryItem";
+import NameItem from "./_components/NameItem";
+import ImageItem from "./_components/ImageItem";
 
 const ItemProduct = ({ product }: { product: Product }) => {
   const { isAuthenticated } = useAuthStore();
 
   return (
-    <li className=" bg-slate-300 w-full sm:w-72 p-2 shadow-lg rounded-md">
+    <li
+      className=" bg-slate-300 hover:bg-slate-400 transition-discrete
+ w-full sm:w-72 p-2 shadow-lg rounded-md"
+    >
       <Link href={isAuthenticated ? product._id : "/login"}>
-        <div className="w-full h-52">
-          <LoadingImage src={product?.images[0]} size={15} alt={product.name} />
-        </div>
+        <ImageItem name={product.name} imageSrc={product?.images[0]} />
         <div className="grid grid-cols-1 grid-rows-3">
-          <h3 className="text-lgd">{product.name}</h3>
-          <h4 className="text-xl md:text-lg">
-            category: {product.category.name}
-          </h4>
-          <button className="p-2 bg-orange-400 hover:bg-orange-300 text-white rounded-md">
-            Add to cart
-          </button>
+          <NameItem name={product.name} />
+          <CategoryItem category={product.category.name} />
+          <ButtonItem />
         </div>
       </Link>
     </li>
