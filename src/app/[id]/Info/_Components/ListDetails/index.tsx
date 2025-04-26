@@ -9,11 +9,12 @@ import ColorProduct from "./_components/ColorProduct";
 import QytProduct from "./_components/QytProduct";
 import ShareProduct from "./_components/ShareProduct";
 import ButtonProduct from "./_components/ButtonProduct";
+import LoadingPage from "@/Components/Loading";
 const ListDetails = ({ id }: { id: string }) => {
   const { isLoading, data, error, buttonHadnler, isCart } = useProductCard({
     id,
   });
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingPage />;
   if (error) return <div>Error: {error.message}</div>;
   return (
     <div className="md:flex md:gap-2 md:justify-center">
