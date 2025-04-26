@@ -1,30 +1,20 @@
-import { useLoadingImage } from "@/utils/loadingImage.hook";
-import React, { useMemo } from "react";
+import React from "react";
 import { BeatLoader } from "react-spinners";
+import { useLoadingImage } from "./hook";
 
 interface LoadingImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   size?: number;
   frameStyle?: string;
 }
-
 const LoadingImage = React.memo(
   ({ src, alt, size = 15, frameStyle, ...rest }: LoadingImageProps) => {
-    const { isLoading } = useLoadingImage({ src });
-    const beatLoaderProps = useMemo(
-      () => ({
-        size,
-        color: "#ff7a00",
-      }),
-      [size]
-    );
-    const imgClassName = useMemo(
-      () => `w-full h-full object-cover ${rest.className || ""}`,
-      [rest.className]
-    );
-    const containerClassName = `w-full h-full ${frameStyle}`;
-
+    const { isLoading, beatLoaderProps, imgClassName } = useLoadingImage({
+      src: src,
+      size: size,
+      rest: rest.className,
+    });
     return (
-      <div className={containerClassName}>
+      <div className={`w-full h-full ${frameStyle}`}>
         {isLoading ? (
           <div className="flex w-full h-full justify-center items-center">
             <BeatLoader {...beatLoaderProps} />
