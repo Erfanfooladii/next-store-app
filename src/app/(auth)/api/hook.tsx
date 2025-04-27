@@ -1,16 +1,31 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import type { RegisterType } from "../types";
-import { postUser } from "./api";
+import { useMutation } from "@tanstack/react-query";
+import type { LoginType, RegisterType } from "../_types";
+import { postUserRegister, postUserLogin } from "./api";
+import { useAuthStore } from "@/stores/authStore";
+/* This is hook for register users */
 
-export const usePostRegister = (): UseMutationResult<
-  Response,
-  Error,
-  RegisterType
-> => {
+export const useMutationRegister = () => {
+  const { addUserAuth } = useAuthStore();
+
   return useMutation({
-    mutationFn: postUser,
-    onError: (error: Error) => {
-      console.error("Registration error:", error);
+    mutationFn: (formData: RegisterType) => postUserRegister(formData),
+    onSuccess: (data) => {
+      addUserAuth(data);
+    },
+    onError: (error) => {
+      console.error("Registration error:", error.message);
+    },
+  });
+};
+/* This is hook for login users */
+
+export const useMutationLogin = () => {
+  const { addUserAuth } = useAuthStore();
+
+  return useMutation({
+    mutationFn: (formData: LoginType) => postUserLogin(formData),
+    onSuccess: (data) => {
+      addUserAuth(data);
     },
   });
 };

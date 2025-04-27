@@ -7,6 +7,7 @@ interface FormAuthProps {
 const FormAuth = ({ children, formHandler, title }: FormAuthProps) => {
   return (
     <form
+      noValidate
       onSubmit={formHandler}
       className="flex border border-orange-900 p-4 rounded-lg gap-2 flex-col items-center"
     >
