@@ -5,10 +5,16 @@ import FormAuth from "../_components/FormAuth";
 import InputAuth from "../_components/InputAuth";
 import ButtonAuth from "../_components/ButtonAuth";
 import BottomAuth from "../_components/BottomAuth";
+import Notifications from "@/Components/Notification";
 const Register = () => {
-  const { formHandler, registerFromUser, inputHandler } = useRegisterUser();
+  const { formHandler, registerFromUser, inputHandler, errors, errorServer } =
+    useRegisterUser();
   return (
     <div className="min-h-[750px] flex items-center justify-center min-w-32">
+      <Notifications
+        isType="error"
+        message={errors.name || errors.email || errors.password || errorServer}
+      />
       <FormAuth title="Register Form" formHandler={formHandler}>
         <InputAuth
           value={registerFromUser.name}
