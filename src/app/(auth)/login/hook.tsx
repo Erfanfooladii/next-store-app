@@ -3,6 +3,7 @@ import { useAuthStore } from "@/stores/authStore";
 import { useState } from "react";
 import { useMutationLogin } from "../api/hook";
 import { useRouter } from "next/navigation";
+import { useValidateEmail } from "@/utils/validateEmail.hook";
 
 export const useLoginHandler = () => {
   const { mutate } = useMutationLogin();
@@ -28,12 +29,6 @@ export const useLoginHandler = () => {
   };
 
   const { loginUserAuth } = useAuthStore();
-
-  function validateEmail(email: string) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  }
-
   const validateLogin = () => {
     let isValid = true;
     const newErrors = { password: "", email: "" };
@@ -41,7 +36,7 @@ export const useLoginHandler = () => {
     if (!loginUser.email.trim()) {
       newErrors.email = "Please fill in the email field.";
       isValid = false;
-    } else if (!validateEmail(loginUser.email.trim())) {
+    } else if (!useValidateEmail(loginUser.email.trim())) {
       newErrors.email = "Please enter a valid email address.";
       isValid = false;
     }
