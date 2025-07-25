@@ -1,0 +1,12 @@
+name: Product Category Filtering
+page: home
+page_path: src/app/page.tsx
+task: Test filtering products by category
+steps:
+- Navigate to the home page
+- Locate the category filter in the Aside component
+- Select a specific category
+- Verify that only products from the selected category are displayed
+- Select a different category
+- Verify the product list updates to show items from the newly selected category
+expected_result: Only products from the selected category should be displayed

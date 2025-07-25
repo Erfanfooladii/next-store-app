@@ -1,0 +1,12 @@
+name: User Registration Flow
+page: register
+page_path: src/app/(auth)/register/page.tsx
+task: Test user registration with valid credentials
+steps:
+- Navigate to the registration page
+- Enter valid email address in the email field
+- Enter valid password in the password field
+- Click the register button
+- Verify successful registration notification appears
+- Verify redirection to login page
+expected_result: User should be registered successfully and redirected to login page

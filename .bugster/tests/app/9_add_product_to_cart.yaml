@@ -1,0 +1,12 @@
+name: Add Product to Cart
+page: product detail
+page_path: src/app/[id]/page.tsx
+task: Test adding a product to the cart
+steps:
+- Navigate to a product detail page
+- Use quantity selector to choose a quantity (if available)
+- Click the Add to Cart button
+- Verify success notification appears
+- Navigate to the cart page
+- Verify the product appears in the cart with correct quantity
+expected_result: Product should be added to the cart with selected quantity

@@ -1,0 +1,12 @@
+name: Empty Cart View
+page: cart
+page_path: src/app/Cart/page.tsx
+task: Test empty cart display
+steps:
+- Ensure the cart is empty (remove all items if necessary)
+- Navigate to the cart page
+- Verify empty cart message is displayed
+- Verify that a button to continue shopping is present
+- Click on the continue shopping button
+- Verify redirection to the home page
+expected_result: Empty cart message should be displayed when cart has no items

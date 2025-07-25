@@ -1,0 +1,12 @@
+name: Product Listing Navigation
+page: home
+page_path: src/app/page.tsx
+task: Test product listing and pagination
+steps:
+- Navigate to the home page
+- Verify products are displayed in a grid layout
+- Click on pagination to navigate to the next page
+- Verify new set of products is loaded
+- Click on pagination to navigate back to the first page
+- Verify original products are displayed again
+expected_result: Products should be displayed with pagination functionality working
