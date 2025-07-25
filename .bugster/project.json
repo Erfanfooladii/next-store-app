@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "timestamp": 1753432416212,
+    "version": 2,
+    "git": {
+      "branch": "bugster/tests/onboarding-20250725-083333",
+      "commit": "2b7c8e0a3bdf97fa4a63e110449bca84cb76cd9a"
+    }
+  },
+  "data": {
+    "frameworks": [
+      {
+        "id": "next",
+        "name": "Next.js",
+        "dir_path": "/home/bugsteruser/app/repo/"
+      }
+    ]
+  }
+}

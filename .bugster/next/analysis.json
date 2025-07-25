@@ -1,0 +1,309 @@
+{
+  "metadata": {
+    "timestamp": 1753432416.3794148,
+    "version": 2,
+    "git": {
+      "branch": "bugster/tests/onboarding-20250725-083333",
+      "commit": "2b7c8e0a3bdf97fa4a63e110449bca84cb76cd9a"
+    }
+  },
+  "data": {
+    "framework": {
+      "id": "next",
+      "name": "Next.js",
+      "dir_path": "/home/bugsteruser/app/repo/"
+    },
+    "router_type": "app",
+    "stats": {
+      "fileCount": 91,
+      "routeCount": 5,
+      "apiRouteCount": 8,
+      "layoutCount": 1
+    },
+    "layouts": [
+      {
+        "name": "function",
+        "relative_file_path": "src/app/layout.tsx",
+        "relative_dir_path": "src/app",
+        "content": "import type { Metadata } from \"next\";\nimport { Geist, Geist_Mono } from \"next/font/google\";\nimport \"./globals.css\";\nimport { Header } from \"@/layouts/Header\";\nimport { Footer } from \"@/layouts/Footer\";\nimport Providers from \"../Providers/ReactQuery\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\nexport const metadata: Metadata = {\n  title: \"STEGER APP\",\n  description: \"This is store app\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\">\n      <head>\n        <script\n          crossOrigin=\"anonymous\"\n          src=\"//unpkg.com/react-scan/dist/auto.global.js\"\n        ></script>\n      </head>\n\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        <Providers>\n          <Header />\n          <div className=\"w-full sm:w-3/4 m-auto\">{children}</div>\n          <Footer />\n        </Providers>\n      </body>\n    </html>\n  );\n}\n",
+        "components": [
+          "Footer",
+          "Providers",
+          "Header"
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "routePath": "src/app/(auth)/login",
+        "relativeFilePath": "src/app/(auth)/login/page.tsx",
+        "layoutChain": [
+          "function"
+        ],
+        "components": [
+          "ButtonAuth",
+          "FormAuth",
+          "InputAuth",
+          "Notifications",
+          "BottomAuth"
+        ],
+        "hasParams": false,
+        "hasForm": false,
+        "hooks": [
+          "useLoginHandler"
+        ],
+        "eventHandlers": [],
+        "featureFlags": []
+      },
+      {
+        "routePath": "src/app/(auth)/register",
+        "relativeFilePath": "src/app/(auth)/register/page.tsx",
+        "layoutChain": [
+          "function"
+        ],
+        "components": [
+          "ButtonAuth",
+          "FormAuth",
+          "InputAuth",
+          "Notifications",
+          "BottomAuth"
+        ],
+        "hasParams": false,
+        "hasForm": false,
+        "hooks": [
+          "useRegisterUser"
+        ],
+        "eventHandlers": [],
+        "featureFlags": []
+      },
+      {
+        "routePath": "src/app/Cart",
+        "relativeFilePath": "src/app/Cart/page.tsx",
+        "layoutChain": [
+          "function"
+        ],
+        "components": [
+          "ListCart",
+          "ItemCart",
+          "TitleCart",
+          "BottomContentCart",
+          "EmptyCart"
+        ],
+        "hasParams": false,
+        "hasForm": false,
+        "hooks": [
+          "useCartHandele"
+        ],
+        "eventHandlers": [],
+        "featureFlags": []
+      },
+      {
+        "routePath": "src/app/:id",
+        "relativeFilePath": "src/app/[id]/page.tsx",
+        "layoutChain": [
+          "function"
+        ],
+        "components": [
+          "ListDetails",
+          "NotFound"
+        ],
+        "hasParams": true,
+        "hasForm": false,
+        "hooks": [],
+        "eventHandlers": [],
+        "featureFlags": []
+      },
+      {
+        "routePath": "src/app",
+        "relativeFilePath": "src/app/page.tsx",
+        "layoutChain": [
+          "function"
+        ],
+        "components": [
+          "Aside",
+          "Pagination",
+          "ListProducts"
+        ],
+        "hasParams": false,
+        "hasForm": false,
+        "hooks": [],
+        "eventHandlers": [],
+        "featureFlags": []
+      }
+    ],
+    "api_routes": [
+      {
+        "routePath": "src/app/(auth)/api/api.ts",
+        "relativeFilePath": "src/app/(auth)/api/api.ts",
+        "methods": [],
+        "hasValidation": false,
+        "deps": [
+          "LoginType",
+          "RegisterType"
+        ]
+      },
+      {
+        "routePath": "src/app/(auth)/api/hook.tsx",
+        "relativeFilePath": "src/app/(auth)/api/hook.tsx",
+        "methods": [],
+        "hasValidation": false,
+        "deps": [
+          "useMutation",
+          "postUserRegister",
+          "postUserLogin",
+          "useAuthStore"
+        ]
+      },
+      {
+        "routePath": "src/app/:id/api/api.ts",
+        "relativeFilePath": "src/app/[id]/api/api.ts",
+        "methods": [],
+        "hasValidation": false,
+        "deps": [
+          "Product"
+        ]
+      },
+      {
+        "routePath": "src/app/:id/api/hook.tsx",
+        "relativeFilePath": "src/app/[id]/api/hook.tsx",
+        "methods": [],
+        "hasValidation": false,
+        "deps": [
+          "useQuery",
+          "getProductId"
+        ]
+      },
+      {
+        "routePath": "src/app/api/products/api.ts",
+        "relativeFilePath": "src/app/api/products/api.ts",
+        "methods": [],
+        "hasValidation": false,
+        "deps": [
+          "Data"
+        ]
+      },
+      {
+        "routePath": "src/app/api/products/hook.tsx",
+        "relativeFilePath": "src/app/api/products/hook.tsx",
+        "methods": [],
+        "hasValidation": false,
+        "deps": [
+          "Data",
+          "useQuery",
+          "getData"
+        ]
+      },
+      {
+        "routePath": "src/app/api/topSellins/api.ts",
+        "relativeFilePath": "src/app/api/topSellins/api.ts",
+        "methods": [],
+        "hasValidation": false,
+        "deps": []
+      },
+      {
+        "routePath": "src/app/api/topSellins/hook.tsx",
+        "relativeFilePath": "src/app/api/topSellins/hook.tsx",
+        "methods": [],
+        "hasValidation": false,
+        "deps": [
+          "useQuery",
+          "getTopSellins",
+          "Product"
+        ]
+      }
+    ],
+    "all_paths": [
+      "next.config.ts",
+      "src/Components/Categorey/InputCategorey/index.tsx",
+      "src/Components/Categorey/index.tsx",
+      "src/Components/Loading/index.tsx",
+      "src/Components/LoadingImage/hook.tsx",
+      "src/Components/LoadingImage/index.tsx",
+      "src/Components/Notification/index.tsx",
+      "src/Components/Search/index.tsx",
+      "src/Components/Show/index.tsx",
+      "src/Interfaces/products.ts",
+      "src/Providers/ReactQuery/index.tsx",
+      "src/Providers/ResponsiveSize/index.tsx",
+      "src/app/(auth)/_components/BottomAuth/index.tsx",
+      "src/app/(auth)/_components/ButtonAuth/index.tsx",
+      "src/app/(auth)/_components/FormAuth/index.tsx",
+      "src/app/(auth)/_components/InputAuth/index.tsx",
+      "src/app/(auth)/_types/index.ts",
+      "src/app/(auth)/api/api.ts",
+      "src/app/(auth)/api/hook.tsx",
+      "src/app/(auth)/login/hook.tsx",
+      "src/app/(auth)/login/page.tsx",
+      "src/app/(auth)/register/hook.tsx",
+      "src/app/(auth)/register/page.tsx",
+      "src/app/Cart/_components/BottomContentCart/index.tsx",
+      "src/app/Cart/_components/EmptyCart/index.tsx",
+      "src/app/Cart/_components/ItemCart/index.tsx",
+      "src/app/Cart/_components/ListCart/index.tsx",
+      "src/app/Cart/_components/TitleCart/index.tsx",
+      "src/app/Cart/page.tsx",
+      "src/app/Info/_Components/Aside/index.tsx",
+      "src/app/Info/_Components/ListProducts/ItemProduct/_components/ButtonItem/index.tsx",
+      "src/app/Info/_Components/ListProducts/ItemProduct/_components/CategoryItem/index.tsx",
+      "src/app/Info/_Components/ListProducts/ItemProduct/_components/ImageItem/index.tsx",
+      "src/app/Info/_Components/ListProducts/ItemProduct/_components/NameItem/index.tsx",
+      "src/app/Info/_Components/ListProducts/ItemProduct/index.tsx",
+      "src/app/Info/_Components/ListProducts/index.tsx",
+      "src/app/Info/_Components/LivePrece/index.tsx",
+      "src/app/Info/_Components/Pagination/ButtonPagination/index.tsx",
+      "src/app/Info/_Components/Pagination/index.tsx",
+      "src/app/Info/_Components/TopSellins/TopSellinsItems/index.tsx",
+      "src/app/Info/_Components/TopSellins/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/ButtonProduct/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/ColorProduct/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/DescriptionProduct/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/PriceProduct/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/QytProduct/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/RatingProduct/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/ShareProduct/ShareLinks/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/ShareProduct/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/SliderImage/SliderButtons/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/SliderImage/hook.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/SliderImage/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/_components/TitleProduct/index.tsx",
+      "src/app/[id]/Info/_Components/ListDetails/index.tsx",
+      "src/app/[id]/api/api.ts",
+      "src/app/[id]/api/hook.tsx",
+      "src/app/[id]/hook.tsx",
+      "src/app/[id]/not-found.tsx",
+      "src/app/[id]/page.tsx",
+      "src/app/api/products/api.ts",
+      "src/app/api/products/hook.tsx",
+      "src/app/api/topSellins/api.ts",
+      "src/app/api/topSellins/hook.tsx",
+      "src/app/layout.tsx",
+      "src/app/not-found.tsx",
+      "src/app/page.tsx",
+      "src/layouts/Footer/index.tsx",
+      "src/layouts/Footer/listButtons.ts",
+      "src/layouts/Header/Components/BottomContnet/Components/ContactDetails/data.tsx",
+      "src/layouts/Header/Components/BottomContnet/Components/ContactDetails/index.tsx",
+      "src/layouts/Header/Components/BottomContnet/Components/ContactDetails/type.ts",
+      "src/layouts/Header/Components/BottomContnet/Components/ListLinks/index.tsx",
+      "src/layouts/Header/Components/BottomContnet/index.tsx",
+      "src/layouts/Header/Components/Menu/index.tsx",
+      "src/layouts/Header/Components/TopContent/Components/ButtonsProfileHeader/index.tsx",
+      "src/layouts/Header/Components/TopContent/index.tsx",
+      "src/layouts/Header/icons/icons.tsx",
+      "src/layouts/Header/index.tsx",
+      "src/stores/authStore.tsx",
+      "src/stores/cartStore.tsx",
+      "src/stores/categoryStore.tsx",
+      "src/stores/dataStore.tsx",
+      "src/stores/pageStore.tsx",
+      "src/stores/searchStore.tsx",
+      "src/stores/showStore.tsx",
+      "src/utils/cart.hook.tsx",
+      "src/utils/category.hook.tsx",
+      "src/utils/media.hook.tsx",
+      "src/utils/search.hook.tsx",
+      "src/utils/validateEmail.hook.tsx",
+      "tailwind.config.ts"
+    ]
+  }
+}

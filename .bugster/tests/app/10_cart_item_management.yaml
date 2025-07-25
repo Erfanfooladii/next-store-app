@@ -1,0 +1,12 @@
+name: Cart Item Management
+page: cart
+page_path: src/app/Cart/page.tsx
+task: Test managing items in the cart
+steps:
+- Navigate to the cart page with items already added
+- Modify the quantity of an item
+- Verify the cart total updates accordingly
+- Remove an item from the cart
+- Verify the item is no longer displayed in the cart
+- Verify the cart total is updated correctly
+expected_result: User should be able to modify quantity and remove items from cart

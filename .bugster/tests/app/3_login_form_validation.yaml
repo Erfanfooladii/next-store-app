@@ -1,0 +1,12 @@
+name: Login Form Validation
+page: login
+page_path: src/app/(auth)/login/page.tsx
+task: Test form validation with invalid email format
+steps:
+- Navigate to the login page
+- Enter invalid email format (e.g., 'test@')
+- Enter any password
+- Click the login button
+- Verify error message appears indicating invalid email format
+- Verify form submission is prevented
+expected_result: Form should display error message and prevent submission

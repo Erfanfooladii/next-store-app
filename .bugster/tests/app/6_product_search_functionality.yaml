@@ -1,0 +1,12 @@
+name: Product Search Functionality
+page: home
+page_path: src/app/page.tsx
+task: Test searching for products
+steps:
+- Navigate to the home page
+- Locate the search input field
+- Enter a search term that matches known products
+- Verify that search results show only products matching the search term
+- Clear the search field
+- Verify that all products are displayed again
+expected_result: Only products matching the search query should be displayed

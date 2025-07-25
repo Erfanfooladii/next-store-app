@@ -1,0 +1,11 @@
+name: Share Product Functionality
+page: product detail
+page_path: src/app/[id]/page.tsx
+task: Test sharing product via social media links
+steps:
+- Navigate to a product detail page
+- Locate the share product section
+- Verify multiple sharing options are displayed
+- Click on a sharing option
+- Verify appropriate sharing dialog or link appears
+expected_result: Social media sharing options should be available and functional

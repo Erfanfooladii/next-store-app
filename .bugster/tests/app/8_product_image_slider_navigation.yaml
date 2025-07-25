@@ -1,0 +1,13 @@
+name: Product Image Slider Navigation
+page: product detail
+page_path: src/app/[id]/page.tsx
+task: Test product image slider navigation
+steps:
+- Navigate to a product detail page
+- Verify multiple product images are available in the slider
+- Click the next button on the slider
+- Verify the next image is displayed
+- Click the previous button on the slider
+- Verify the previous image is displayed
+expected_result: User should be able to navigate through product images using slider
+  controls

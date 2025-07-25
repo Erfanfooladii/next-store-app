@@ -1,0 +1,12 @@
+name: User Login Flow
+page: login
+page_path: src/app/(auth)/login/page.tsx
+task: Test user login with valid credentials
+steps:
+- Navigate to the login page
+- Enter registered email address in the email field
+- Enter correct password in the password field
+- Click the login button
+- Verify successful login notification appears
+- Verify redirection to home page
+expected_result: User should be logged in successfully and redirected to home page

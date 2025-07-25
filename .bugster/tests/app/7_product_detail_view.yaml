@@ -1,0 +1,14 @@
+name: Product Detail View
+page: product detail
+page_path: src/app/[id]/page.tsx
+task: Test viewing detailed product information
+steps:
+- Navigate to the home page
+- Click on a product to view its details
+- Verify product title is displayed correctly
+- Verify product images are displayed in a slider
+- Verify product price is displayed correctly
+- Verify product description is displayed
+- Verify product rating is displayed
+expected_result: Product details page should display complete information about the
+  selected product
